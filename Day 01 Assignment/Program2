@@ -1,0 +1,62 @@
+def display_menu():
+    print("\n🌡️ Temperature Converter Options:")
+    print("1: Celsius to Fahrenheit")
+    print("2: Fahrenheit to Celsius")
+    print("3: Celsius to Kelvin")
+    print("4: Kelvin to Celsius")
+    print("q: Quit")
+
+
+def get_temperature():
+    # 📥 Input for Temperature with quit option and error handling
+    while True:
+        temp_input = input("Enter temperature value: ")
+        if temp_input.lower() in ["q", "quit"]:
+            return "quit"
+        try:
+            return float(temp_input)
+        except ValueError:
+            # ❌ Error Handling for Invalid Input
+            print("Error: Please enter a valid numeric temperature.")
+
+
+def convert_temperature(choice, temp):
+    # 🧮 Conversion logic
+    if choice == "1":
+        return (temp * 9/5) + 32, "Fahrenheit"
+    elif choice == "2":
+        return (temp - 32) * 5/9, "Celsius"
+    elif choice == "3":
+        return temp + 273.15, "Kelvin"
+    elif choice == "4":
+        return temp - 273.15, "Celsius"
+
+
+# 🔁 Continuous Operation
+print("🔁 Welcome to the Interactive Temperature Converter!")
+
+while True:
+    display_menu()
+    
+    # 📥 User Options and Quit Option
+    choice = input("Select an option (1-4 or q to quit): ").lower()
+    if choice in ["q", "quit"]:
+        break
+
+    # ❌ Error Handling for Invalid Choice
+    if choice not in ["1", "2", "3", "4"]:
+        print("Error: Invalid option. Please select a valid number between 1 and 4 or 'q' to quit.")
+        continue
+
+    temp = get_temperature()
+    if temp == "quit":
+        break
+
+    # ✅ Perform and Display Result
+    converted_value, unit = convert_temperature(choice, temp)
+    print(f"✅ Result: {temp}° → {converted_value:.2f}° {unit}")
+
+# 🔚 Exit message
+print("Your session has ended.")
+
+
