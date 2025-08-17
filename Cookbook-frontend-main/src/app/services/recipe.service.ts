@@ -49,9 +49,17 @@ export class RecipeService {
   return this.http.get<Recipe[]>(`${this.apiUrl}/favorites`);
 }
 
+// toggleFavorite(recipe: Recipe): Observable<Recipe> {
+//   const updatedRecipe = { ...recipe, favorite: !recipe.favorite };
+//   return this.http.put<Recipe>(`${this.apiUrl}/${recipe.id}`, updatedRecipe);
+// }
+
 toggleFavorite(recipe: Recipe): Observable<Recipe> {
-  const updatedRecipe = { ...recipe, favorite: !recipe.favorite };
-  return this.http.put<Recipe>(`${this.apiUrl}/${recipe.id}`, updatedRecipe);
+  return this.http.post<Recipe>(
+    `${this.apiUrl}/${recipe.id}/favorite`,
+    { favorite: !recipe.favorite }   // ✅ send only favorite field
+  );
 }
+
 
 }
