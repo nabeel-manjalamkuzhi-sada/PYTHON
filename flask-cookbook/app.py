@@ -93,39 +93,9 @@ def create_recipe():
     db.session.commit()
     return created(recipe_schema.dump(recipe))
 
-@app.route("/api/recipes/<int:recipe_id>", methods=["PUT"])
-def update_recipe(recipe_id):
-    recipe = Recipe.query.get(recipe_id)
-    if not recipe:
-        return not_found("Recipe not found")
-
-    data = request.get_json() or {}
-    if not data:
-        return bad_request("No data provided")
-
-    try:
-        # Load data partially, allowing missing fields
-        validated = recipe_schema.load(data, partial=True)
-    except ValidationError as err:
-        print("ValidationError:", err.messages)  # For debugging
-        return bad_request(err.messages)
-
-    # Apply only the provided fields
-    for k, v in validated.items():
-        setattr(recipe, k, v)
-
-    db.session.commit()
-    return jsonify(recipe_schema.dump(recipe))
 
 
-@app.route("/api/recipes/<int:recipe_id>", methods=["DELETE"])
-def delete_recipe(recipe_id):
-    recipe = Recipe.query.get(recipe_id)
-    if not recipe:
-        return not_found("Recipe not found")
-    db.session.delete(recipe)
-    db.session.commit()
-    return jsonify({"message": "Deleted"}), 200
+
 
 @app.route("/api/recipes/search")
 def search_by_name():
