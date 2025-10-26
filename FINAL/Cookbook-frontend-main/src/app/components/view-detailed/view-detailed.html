@@ -1,0 +1,24 @@
+<div class="detailed-container" *ngIf="recipe">
+  <h2>{{ recipe?.name }}</h2>
+  <p>{{ recipe?.description }}</p>
+
+  <img *ngIf="recipe?.imageUrl" [src]="recipe?.imageUrl" alt="Recipe Image" />
+
+  <h4>Ingredients</h4>
+  <ul>
+    <li *ngFor="let ingredient of recipe?.ingredients">
+      {{ ingredient }}
+    </li>
+  </ul>
+
+  <h4>Instructions</h4>
+  <ol>
+    <li *ngFor="let step of recipe?.instructions?.split('\n')">
+      {{ step }}
+    </li>
+  </ol>
+  <button (click)="toggleFavorite(recipe)" class="favorite-toggle">
+  <span [ngClass]="{ 'favorited': recipe.favorite }">♥</span>
+  </button>
+
+</div>
