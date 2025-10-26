@@ -1,0 +1,62 @@
+# Dictionary for unit conversion to meters
+conversion_to_meters = {
+    "mm": 0.001,
+    "cm": 0.01,
+    "m": 1.0,
+    "km": 1000.0
+}
+
+def get_value():
+    # 📥 Prompt user for numeric value or quit
+    while True:
+        val = input("Enter the length value to convert: ")
+        if val.lower() in ["q", "quit"]:
+            return "quit"
+        try:
+            return float(val)
+        except ValueError:
+            # ❌ Error Handling for invalid number
+            print("Error: Please enter a valid number.")
+
+def get_unit(prompt):
+    # 📥 Prompt user for unit, with quit and case-insensitive support
+    while True:
+        unit = input(prompt).lower()  # ✅ Optional Enhancement: case-insensitive
+        if unit in ["q", "quit"]:
+            return "quit"
+        if unit in conversion_to_meters:
+            return unit
+        else:
+            # ❌ Error Handling for invalid unit
+            print("Error: Please enter a valid unit like mm, cm, m, or km.")
+
+def convert_length(value, from_unit, to_unit):
+    # 🔁 Convert value to meters, then to target unit
+    meters = value * conversion_to_meters[from_unit]
+    result = meters / conversion_to_meters[to_unit]
+    return result
+
+# 🔁 Continuous Operation
+print("📏 Welcome to the Simple Unit Converter (Length)")
+print("Supported units: mm, cm, m, km")
+print("Type 'q' or 'quit' at any prompt to exit.\n")
+
+while True:
+    value = get_value()
+    if value == "quit":
+        break
+
+    from_unit = get_unit("Enter the source unit (mm, cm, m, km): ")
+    if from_unit == "quit":
+        break
+
+    to_unit = get_unit("Enter the target unit (mm, cm, m, km): ")
+    if to_unit == "quit":
+        break
+
+    # ✅ Display Result
+    converted = convert_length(value, from_unit, to_unit)
+    print(f"✅ {value} {from_unit} is equal to {converted:.4f} {to_unit}\n")
+
+# 🔚 Exit Message
+print("Your session has ended.")
