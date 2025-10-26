@@ -1,0 +1,29 @@
+3. Sample emails.txt (Email Content for Spam Filtering)
+From: promo@freestuff.com  
+Subject: Win a FREE vacation now!  
+Body: Click here to win a trip to Hawaii.  
+---
+From: boss@company.com  
+Subject: Project Deadline  
+Body: Please submit the latest report by EOD today.  
+---
+From: noreply@bank.com  
+Subject: Suspicious login detected  
+Body: We detected a login from a new device. Was this you?  
+---
+From: marketing@cheapdeals.org  
+Subject: Get rich fast!  
+Body: Invest $100 today and earn $10,000 in a week!  
+---
+From: support@service.com  
+Subject: Your ticket has been updated  
+Body: Your support ticket #12345 has been resolved.  
+---
+From: alert@security.com  
+Subject: Urgent: Password Reset Required  
+Body: Your password has expired. Click here to reset it now.  
+---
+From: friend@example.com  
+Subject: Weekend Plans  
+Body: Let’s catch up for coffee this weekend.  
+---
