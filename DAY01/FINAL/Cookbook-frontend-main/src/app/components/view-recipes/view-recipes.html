@@ -1,0 +1,27 @@
+<div class="navbar">
+  <input
+    type="text"
+    [(ngModel)]="searchByNameText"
+    placeholder="Search by recipe name"
+    (input)="searchByName()"
+  >
+  <input
+    type="text"
+    [(ngModel)]="searchByIngredientText"
+    placeholder="Search by ingredient"
+    (input)="searchByIngredient()"
+  />
+</div>
+      <div class="line-1">Explore Our</div>
+      <div class="line-2">Delicious</div>
+      <div class="line-3">Recipes</div>
+<div class="recipes-container">
+  <div class="recipe-card" *ngFor="let recipe of randomRecipes" [routerLink]="['/recipe', recipe.id]">
+    <img *ngIf="recipe.imageUrl" [src]="recipe.imageUrl" alt="Recipe Image" />
+    <div class="recipe-info">
+      <h3>{{ recipe.name }}</h3>
+      
+      <p>{{ recipe.description }}</p>
+    </div>
+  </div>
+</div>

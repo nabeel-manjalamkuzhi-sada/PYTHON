@@ -1,0 +1,10 @@
+Book_Title,Author,Genre,Price,Quantity_Sold,Sale_Date,Customer_Rating
+The Cybernetic Prophet,Jules Verne,Sci-Fi,19.99,150,2025-01-15,4.5
+Mystery of the Scarlet Mansion,Agatha Christie,Mystery,12.50,200,2025-01-16,4.8
+The Last Alchemist,Jules Verne,Fantasy,24.99,105,2025-01-17,4.2
+A Tale of Two Cities,Charles Dickens,Classic,10.00,300,2025-01-18,4.9
+The Cybernetic Prophet,Jules Verne,Sci-Fi,19.99,75,2025-01-20,4.5
+The Last Alchemist,,Fantasy,24.99,90,2025-01-21,4.2
+A Tale of Two Cities,Charles Dickens,Classic,10.00,150,2025-01-22,4.9
+Cooking with Confidence,Julia Child,Cookbook,35.00,80,2025-01-23,4.7
+Mystery of the Scarlet Mansion,Agatha Christie,Mystery,12.50,120,2025-01-24,4.8

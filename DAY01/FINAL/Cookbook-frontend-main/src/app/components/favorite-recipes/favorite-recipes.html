@@ -1,0 +1,23 @@
+<div class="favorites-page">
+  <h1>My Favorite Recipes</h1>
+
+  <div *ngIf="favoriteRecipes.length > 0; else noFavs">
+    <div class="recipes-container">
+      <div class="recipe-card" *ngFor="let recipe of favoriteRecipes">
+        <!-- 💖 Heart icon in top-right -->
+        <div class="favorite-heart" title="Favorite"></div>
+
+        <img *ngIf="recipe.imageUrl" [src]="recipe.imageUrl" alt="Recipe Image" />
+        
+        <div class="recipe-info">
+          <h3>{{ recipe.name }}</h3>
+          <p>{{ recipe.description }}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <ng-template #noFavs>
+    <div class="no-favorites">No favorite recipes yet.</div>
+  </ng-template>
+</div>

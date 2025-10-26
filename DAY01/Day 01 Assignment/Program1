@@ -1,0 +1,43 @@
+# 🔁 Continuous Operation
+print("🔢 Welcome to the Smart Calculator!")
+print("Type 'q' or 'quit' at any prompt to exit.\n")
+
+def get_number(prompt):
+    while True:
+        user_input = input(prompt)
+        if user_input.lower() in ["q", "quit"]:
+            return "quit"
+        try:
+            return float(user_input)
+        except ValueError:
+            print("Error: Please enter a valid number.")
+
+def get_operation():
+    valid_operations = ['+', '-', '*', '/', '**', '%']
+    while True:
+        op = input("Enter operation (+, -, *, /, **, %): ")
+        if op.lower() in ["q", "quit"]:
+            return "quit"
+        if op in valid_operations:
+            return op
+        else:
+            print("Error: Invalid operation. Please choose a valid operation.")
+
+def calculate(num1, num2, operation):
+    try:
+        if operation == '+':
+            return num1 + num2
+        elif operation == '-':
+            return num1 - num2
+        elif operation == '*':
+            return num1 * num2
+        elif operation == '/':
+            return num1 / num2
+        elif operation == '**':
+            return num1 ** num2
+        elif operation == '%':
+            return num1 % num2
+    except ZeroDivisionError:
+        print("Error: Cannot divide by zero!")
+        return None
+
