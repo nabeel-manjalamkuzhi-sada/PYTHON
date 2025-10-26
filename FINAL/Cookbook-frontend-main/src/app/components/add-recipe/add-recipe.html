@@ -1,0 +1,45 @@
+<div class="add-recipe-form">
+  <div class="content-wrapper">
+    <!-- Left: Headline -->
+    <div class="headline">
+      <div class="line-1">Let’s Get Cooking!</div>
+      <!-- <div class="line-2">Create Something Tasty</div> -->
+      <div class="line-3">Add a New Recipe</div>
+    </div>
+
+    <!-- Right: Form -->
+    <form (ngSubmit)="onSubmit()" #recipeForm="ngForm" class="form-content">
+      <label for="name">Name:</label>
+      <input type="text" id="name" required [(ngModel)]="recipe.name" name="name" />
+
+      <label for="description">Description:</label>
+      <textarea id="description" required [(ngModel)]="recipe.description" name="description"></textarea>
+
+      <label>Ingredients:</label>
+      <div class="ingredient-row"
+         *ngFor="let ingredient of recipe.ingredients; let i = index; trackBy: trackByIndex">
+        <input [(ngModel)]="recipe.ingredients[i]" [name]="'ingredient' + i" class="ingredient-input" />
+        <div class="ingredient-actions">
+          <button type="button" (click)="removeIngredient(i)">Remove</button>
+          <button type="button" (click)="addIngredient()">Add</button>
+        </div>
+      </div>
+
+
+      <label for="instructions">Instructions:</label>
+      <textarea id="instructions" required [(ngModel)]="recipe.instructions" name="instructions"></textarea>
+
+      <label for="image">Image:</label>
+      <input type="file" (change)="onImageSelected($event)" />
+
+      <div *ngIf="recipe.imageUrl">
+        <p>Preview:</p>
+        <img [src]="recipe.imageUrl" alt="Preview" width="200" />
+      </div>
+
+      <div class="button-group">
+        <button type="submit" [disabled]="!recipeForm.form.valid">Submit</button>
+      </div>
+    </form>
+  </div>
+</div>
